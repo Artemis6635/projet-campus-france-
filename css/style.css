@@ -99,7 +99,8 @@ body {
   transition: color 0.2s, border-color 0.2s;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.active {
   color: var(--color-primary);
   border-bottom-color: var(--color-primary);
 }
@@ -170,6 +171,18 @@ body {
 
 .btn-full {
   width: 100%;
+}
+
+/* Bandeau de titre de page (pages secondaires) */
+.page-banner {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  padding: 50px 0;
+}
+
+.page-banner h1 {
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
 }
 
 /* Hero */

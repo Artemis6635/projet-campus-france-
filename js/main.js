@@ -1,23 +1,11 @@
-// Liste des composants à charger, dans l'ordre d'affichage
-const COMPONENTS = [
-  'header',
-  'hero',
-  'services',
-  'destinations',
-  'process',
-  'testimonials',
-  'contact',
-  'footer',
-];
-
-async function loadComponent(name) {
-  const target = document.querySelector(`[data-component="${name}"]`);
-  const response = await fetch(`components/${name}.html`);
-  target.innerHTML = await response.text();
-}
-
 async function loadComponents() {
-  await Promise.all(COMPONENTS.map(loadComponent));
+  const targets = document.querySelectorAll('[data-component]');
+  await Promise.all(
+    Array.from(targets).map(async (target) => {
+      const response = await fetch(`components/${target.dataset.component}.html`);
+      target.innerHTML = await response.text();
+    })
+  );
 }
 
 function initBurgerMenu() {
@@ -30,24 +18,53 @@ function initBurgerMenu() {
 }
 
 function initForms() {
-  document.getElementById('hero-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Merci ! Nous vous recontacterons rapidement pour votre projet.');
-  });
+  const heroForm = document.getElementById('hero-form');
+  if (heroForm) {
+    heroForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Merci ! Nous vous recontacterons rapidement pour votre projet.');
+    });
+  }
 
-  document.getElementById('contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Votre message a bien été envoyé. Notre équipe vous répondra très vite.');
-  });
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Votre message a bien été envoyé. Notre équipe vous répondra très vite.');
+    });
+  }
 }
 
 function initNavDemarrerButton() {
   const btnNav = document.getElementById('btn-nav-demarrer');
   if (btnNav) {
     btnNav.addEventListener('click', () => {
-      document.getElementById('hero-form').scrollIntoView({ behavior: 'smooth' });
+      const heroForm = document.getElementById('hero-form');
+      if (heroForm) {
+        heroForm.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = 'index.html#hero-form';
+      }
     });
   }
+}
+
+function scrollToHashTarget() {
+  if (!location.hash) return;
+  const target = document.getElementById(location.hash.slice(1));
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function initActiveNavLink() {
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav a').forEach((link) => {
+    const linkPage = link.getAttribute('href').split('#')[0];
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
 }
 
 async function init() {
@@ -55,6 +72,8 @@ async function init() {
   initBurgerMenu();
   initForms();
   initNavDemarrerButton();
+  initActiveNavLink();
+  scrollToHashTarget();
 }
 
 init();
