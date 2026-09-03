@@ -28,18 +28,20 @@
     <div class="hero-card">
       <h2>Simuler mon projet</h2>
       <p>Remplis ce mini formulaire, nous te recontactons sous 24h.</p>
-      <form id="hero-form">
+      <form id="hero-form" action="https://formspree.io/f/mvkornjr" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle simulation de projet - Site MDP Consulting">
+        <input type="hidden" name="formulaire" value="Simuler mon projet (accueil)">
         <div class="form-group">
           <label for="nom">Nom complet</label>
-          <input type="text" id="nom" placeholder="Votre nom">
+          <input type="text" id="nom" name="nom" placeholder="Votre nom">
         </div>
         <div class="form-group">
           <label for="pays">Pays de résidence</label>
-          <input type="text" id="pays" placeholder="Ex: Maroc, Sénégal...">
+          <input type="text" id="pays" name="pays" placeholder="Ex: Maroc, Sénégal...">
         </div>
         <div class="form-group">
           <label for="niveau">Niveau d’études actuel</label>
-          <select id="niveau">
+          <select id="niveau" name="niveau">
             <option value="">Sélectionnez</option>
             <option>Terminale / Bac</option>
             <option>Bac+1 / Bac+2</option>

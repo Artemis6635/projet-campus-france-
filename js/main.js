@@ -17,12 +17,43 @@ function initBurgerMenu() {
   });
 }
 
+async function submitForm(form, successMessage) {
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalLabel = submitBtn ? submitBtn.textContent : null;
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+  }
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' },
+    });
+
+    if (response.ok) {
+      alert(successMessage);
+      form.reset();
+    } else {
+      alert("Une erreur est survenue lors de l'envoi. Merci de réessayer ou de nous contacter directement.");
+    }
+  } catch (err) {
+    alert("Une erreur est survenue lors de l'envoi. Merci de réessayer ou de nous contacter directement.");
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
+  }
+}
+
 function initForms() {
   const heroForm = document.getElementById('hero-form');
   if (heroForm) {
     heroForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Merci ! Nous vous recontacterons rapidement pour votre projet.');
+      submitForm(heroForm, 'Merci ! Nous vous recontacterons rapidement pour votre projet.');
     });
   }
 
@@ -30,7 +61,7 @@ function initForms() {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Votre message a bien été envoyé. Notre équipe vous répondra très vite.');
+      submitForm(contactForm, 'Votre message a bien été envoyé. Notre équipe vous répondra très vite.');
     });
   }
 }

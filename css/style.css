@@ -83,6 +83,12 @@ body {
   font-size: 24px;
 }
 
+.logo-img {
+  display: block;
+  height: 56px;
+  width: auto;
+}
+
 .nav ul {
   display: flex;
   list-style: none;
