@@ -1,0 +1,44 @@
+<div class="page-banner">
+  <div class="container">
+    <h1>Contacte ton conseiller</h1>
+  </div>
+</div>
+<section class="section" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <p class="section-subtitle">
+        Remplis le formulaire, nous te répondrons rapidement avec les prochaines étapes.
+      </p>
+      <ul class="contact-list">
+        <li>📍 Agence Campus France – Le Mans</li>
+        <li>📞 +33 7 44 29 26 05</li>
+        <li>✉️ mdpconsulting@gmail.com</li>
+        <li>🕒 Lundi – Samedi : 9h00 – 18h30</li>
+      </ul>
+    </div>
+    <div>
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/mvkornjr" method="POST">
+        <input type="hidden" name="_subject" value="Nouveau message de contact - Site MDP Consulting">
+        <input type="hidden" name="formulaire" value="Contact">
+        <div class="form-group">
+          <label for="contact-nom">Nom complet</label>
+          <input type="text" id="contact-nom" name="nom" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-telephone">Téléphone (WhatsApp)</label>
+          <input type="tel" id="contact-telephone" name="telephone">
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Parle-nous de ton projet</label>
+          <textarea id="contact-message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full">Envoyer ma demande</button>
+        <p class="form-note">En envoyant ce formulaire, tu acceptes d’être recontacté par notre équipe.</p>
+      </form>
+    </div>
+  </div>
+</section>
