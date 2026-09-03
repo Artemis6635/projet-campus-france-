@@ -562,10 +562,6 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .hero-card {
-    order: -1;
-  }
-
   .grid-3 {
     grid-template-columns: 1fr 1fr;
   }
