@@ -27,6 +27,15 @@ body {
   line-height: 1.6;
 }
 
+h1,
+h2,
+h3,
+h4,
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
 /* Layout utilitaires */
 .container {
   width: 90%;
@@ -81,6 +90,10 @@ body {
 
 .logo-icon {
   font-size: 24px;
+}
+
+.logo-text {
+  font-size: 16px;
 }
 
 .logo-img {
@@ -518,13 +531,27 @@ textarea {
 }
 
 .footer-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer-logo-badge {
+  display: inline-flex;
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 12px;
+}
+
+.footer-logo-badge .logo-img {
+  height: 40px;
+}
+
+.footer-logo-name {
   font-weight: 600;
   font-size: 15px;
   color: #ffffff;
-  margin-bottom: 10px;
 }
 
 .footer-brand p {
