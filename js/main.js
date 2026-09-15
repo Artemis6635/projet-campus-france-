@@ -106,16 +106,3 @@ async function init() {
   initActiveNavLink();
   scrollToHashTarget();
 }
-
-const btnEcoles = document.getElementById('btn-tab-ecoles');
-    const btnLogements = document.getElementById('btn-tab-logements');
-    if (btnEcoles && btnLogements) {
-      btnEcoles.addEventListener('click', () => {
-        btnEcoles.classList.add('active');
-        btnLogements.classList.remove('active');
-      });
-      btnLogements.addEventListener('click', () => {
-        btnLogements.classList.add('active');
-        btnEcoles.classList.remove('active');
-      });
-    }
