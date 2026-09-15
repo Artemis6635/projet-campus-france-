@@ -19,95 +19,291 @@
   <main>
     <div data-component="hero"></div>
   </main>
- <!-- SECTION ÉCOLES & LOGEMENTS -->
-  <section class="partner-section" id="ecoles">
-    <div class="container">
+<!-- ========================================================= -->
+<!-- DEBUT DE LA SECTION ÉCOLES & LOGEMENTS                     -->
+<!-- ========================================================= -->
+
+<style>
+  /* --- SECTION ÉCOLES & LOGEMENTS --- */
+  .partner-section {
+    background-color: #f4f7fc;
+    padding: 60px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .partner-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .partner-tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .partner-tab-btn {
+    padding: 14px 40px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid #dcdfe6;
+    background: #ffffff;
+    color: #1a237e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .partner-tab-btn:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  .partner-tab-btn:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-left: none;
+  }
+
+  .partner-tab-btn.active {
+    background: #0d1b40;
+    color: #ffffff;
+    border-color: #0d1b40;
+  }
+
+  .schools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .school-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px 15px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 200px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    border: 1px solid #eef2f7;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .school-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+
+  .logo-container {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .school-logo {
+    max-width: 140px;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .school-card:hover .school-logo {
+    transform: scale(1.05);
+  }
+
+  .logo-fallback {
+    width: 110px;
+    height: 50px;
+    background: #eef2ff;
+    color: #1a237e;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #c5cffd;
+    padding: 5px;
+  }
+
+  .school-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 12px;
+    line-height: 1.3;
+  }
+
+  .school-link-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: #1a237e;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 14px;
+    transition: color 0.3s ease;
+  }
+
+  .school-card:hover .school-link-text {
+    color: #0d1450;
+    text-decoration: underline;
+  }
+
+  .disclaimer-text {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 13px;
+    color: #667085;
+    font-style: italic;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .schools-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .schools-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .schools-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section class="partner-section" id="ecoles">
+  <div class="partner-container">
+    
+    <div class="partner-tab-buttons">
+      <button class="partner-tab-btn active" id="btn-tab-ecoles">Écoles</button>
+      <button class="partner-tab-btn" id="btn-tab-logements">Logements</button>
+    </div>
+
+    <div class="schools-grid" id="grid-ecoles">
       
-      <div class="tab-buttons">
-        <button class="tab-btn active" id="btn-tab-ecoles">Écoles</button>
-        <button class="tab-btn" id="btn-tab-logements">Logements</button>
-      </div>
+      <!-- CESI -->
+      <a href="https://www.cesi.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/d/d1/Logo_cesi_2022.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="CESI" class="school-logo">
+          <div class="logo-fallback" style="display:none;">CESI</div>
+        </div>
+        <span class="school-name">CESI École d'Ingénieurs</span>
+        <span class="school-link-text">Visiter le site →</span>
+      </a>
 
-      <div class="schools-grid" id="grid-ecoles">
-        <a href="https://www.cesi.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
-          <div class="logo-container">
-            <img src="https://img.logo.dev/cesi.fr?token=pk_X-X" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="CESI" class="school-logo">
-            <div class="logo-fallback" style="display:none;">CESI</div>
-          </div>
-          <span class="school-name">CESI École d'Ingénieurs</span>
-          <span class="school-link-text">Visiter le site →</span>
-        </a>
+      <!-- ISMANS CESI -->
+      <a href="https://ismans.cesi.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/ISMANS_CESI_logo_2022.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="ISMANS CESI" class="school-logo">
+          <div class="logo-fallback" style="display:none;">ISMANS</div>
+        </div>
+        <span class="school-name">ISMANS CESI</span>
+        <span class="school-link-text">Visiter le site →</span>
+      </a>
 
-        <a href="https://ismans.cesi.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
-          <div class="logo-container">
-            <img src="https://img.logo.dev/ismans.fr?token=pk_X-X" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="ISMANS CESI" class="school-logo">
-            <div class="logo-fallback" style="display:none;">ISMANS</div>
-          </div>
-          <span class="school-name">ISMANS CESI</span>
-          <span class="school-link-text">Visiter le site →</span>
-        </a>
+      <!-- Université de Montpellier -->
+      <a href="https://www.umontpellier.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/1/1e/Logo-universite-de-montpellier-francais-couleur-fond-blanc.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Université de Montpellier" class="school-logo">
+          <div class="logo-fallback" style="display:none;">MONTPELLIER</div>
+        </div>
+        <span class="school-name">Université de Montpellier</span>
+        <span class="school-link-text">Visiter le site →</span>
+      </a>
 
-        <a href="https://www.umontpellier.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
-          <div class="logo-container">
-            <img src="https://img.logo.dev/umontpellier.fr?token=pk_X-X" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Université de Montpellier" class="school-logo">
-            <div class="logo-fallback" style="display:none;">UM</div>
-          </div>
-          <span class="school-name">Université de Montpellier</span>
-          <span class="school-link-text">Visiter le site →</span>
-        </a>
+      <!-- Sorbonne Université -->
+      <a href="https://www.sorbonne-universite.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/a/a2/Logo_Sorbonne_Universit%C3%A9.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Sorbonne Université" class="school-logo">
+          <div class="logo-fallback" style="display:none;">SORBONNE</div>
+        </div>
+        <span class="school-name">Sorbonne Université</span>
+        <span class="school-link-text">Visiter le site →</span>
+      </a>
 
-        <a href="https://www.sorbonne-universite.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
-          <div class="logo-container">
-            <img src="https://img.logo.dev/sorbonne-universite.fr?token=pk_X-X" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Sorbonne Université" class="school-logo">
-            <div class="logo-fallback" style="display:none;">SORBONNE</div>
-          </div>
-          <span class="school-name">Sorbonne Université</span>
-          <span class="school-link-text">Visiter le site →</span>
-        </a>
+      <!-- Université Lyon 1 -->
+      <a href="https://www.univ-lyon1.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/e/eb/Logo-UCBL1.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Université Lyon 1" class="school-logo">
+          <div class="logo-fallback" style="display:none;">LYON 1</div>
+        </div>
+        <span class="school-name">Université Claude Bernard Lyon 1</span>
+        <span class="school-link-text">Visiter le site →</span>
+      </a>
 
-        <a href="https://www.univ-lyon1.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
-          <div class="logo-container">
-            <img src="https://img.logo.dev/univ-lyon1.fr?token=pk_X-X" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Université Lyon 1" class="school-logo">
-            <div class="logo-fallback" style="display:none;">LYON 1</div>
-          </div>
-          <span class="school-name">Université Claude Bernard Lyon 1</span>
-          <span class="school-link-text">Visiter le site →</span>
-        </a>
+      <!-- Université de Toulouse -->
+      <a href="https://www.univ-toulouse.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/4/4e/Logo_Universit%C3%A9_de_Toulouse_2023.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Université de Toulouse" class="school-logo">
+          <div class="logo-fallback" style="display:none;">TOULOUSE</div>
+        </div>
+        <span class="school-name">Université de Toulouse</span>
+        <span class="school-link-text">Visiter le site →</span>
+      </a>
 
-        <a href="https://www.univ-toulouse.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
-          <div class="logo-container">
-            <img src="https://img.logo.dev/univ-toulouse.fr?token=pk_X-X" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Université de Toulouse" class="school-logo">
-            <div class="logo-fallback" style="display:none;">TOULOUSE</div>
-          </div>
-          <span class="school-name">Université de Toulouse</span>
-          <span class="school-link-text">Visiter le site →</span>
-        </a>
+      <!-- Aix-Marseille Université -->
+      <a href="https://www.univ-amu.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/0/08/Aix-Marseille_Universit%C3%A9_logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Aix-Marseille Université" class="school-logo">
+          <div class="logo-fallback" style="display:none;">AMU</div>
+        </div>
+        <span class="school-name">Aix-Marseille Université</span>
+        <span class="school-link-text">Visiter le site →</span>
+      </a>
 
-        <a href="https://www.univ-amu.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
-          <div class="logo-container">
-            <img src="https://img.logo.dev/univ-amu.fr?token=pk_X-X" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Aix-Marseille Université" class="school-logo">
-            <div class="logo-fallback" style="display:none;">AMU</div>
-          </div>
-          <span class="school-name">Aix-Marseille Université</span>
-          <span class="school-link-text">Visiter le site →</span>
-        </a>
-
-        <a href="https://www.univ-lille.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
-          <div class="logo-container">
-            <img src="https://img.logo.dev/univ-lille.fr?token=pk_X-X" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Université de Lille" class="school-logo">
-            <div class="logo-fallback" style="display:none;">LILLE</div>
-          </div>
-          <span class="school-name">Université de Lille</span>
-          <span class="school-link-text">Visiter le site →</span>
-        </a>
-      </div>
-
-      <p class="disclaimer-text">
-        * Ce ne sont pas des écoles partenaires, mais plutôt des établissements que fréquents quelques-uns de nos étudiants.
-      </p>
+      <!-- Université de Lille -->
+      <a href="https://www.univ-lille.fr/" target="_blank" rel="noopener noreferrer" class="school-card">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/1/1a/Logo_Universit%C3%A9_de_Lille_2022.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Université de Lille" class="school-logo">
+          <div class="logo-fallback" style="display:none;">LILLE</div>
+        </div>
+        <span class="school-name">Université de Lille</span>
+        <span class="school-link-text">Visiter le site →</span>
+      </a>
 
     </div>
-  </section>
+
+    <p class="disclaimer-text">
+      * Ce ne sont pas des écoles partenaires, mais plutôt des établissements que fréquentent quelques-uns de nos étudiants.
+    </p>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btnEcoles = document.getElementById('btn-tab-ecoles');
+    const btnLogements = document.getElementById('btn-tab-logements');
+
+    if (btnEcoles && btnLogements) {
+      btnEcoles.addEventListener('click', function() {
+        btnEcoles.classList.add('active');
+        btnLogements.classList.remove('active');
+      });
+
+      btnLogements.addEventListener('click', function() {
+        btnLogements.classList.add('active');
+        btnEcoles.classList.remove('active');
+      });
+    }
+  });
+</script>
+
+<!-- ========================================================= -->
+<!-- FIN DE LA SECTION ÉCOLES & LOGEMENTS                       -->
+<!-- ========================================================= -->
   <div data-component="footer"></div>
 
   <script src="js/main.js"></script>
